@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Timer</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Study Timer</h1>
+        <p class="tagline">Focus for 25 min, then take a break.</p>
+    </header>
+
+    <main>
+        <div class="mode-tabs" id="modeTabs">
+            <button class="tab active" data-mode="focus">Focus</button>
+            <button class="tab" data-mode="short">Short Break</button>
+            <button class="tab" data-mode="long">Long Break</button>
+        </div>
+
+        <div class="custom-input">
+            <label for="customMinutes">Custom min</label>
+            <input type="number" id="customMinutes" min="1" max="120" value="25" />
+            <button id="applyCustom">Set</button>
+        </div>
+
+        <section class="timer-circle">
+            <svg class="progress-ring" width="210" height="210" viewBox="0 0 200 200" aria-hidden="true">
+                <circle class="ring-bg" cx="100" cy="100" r="88"></circle>
+                <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="88"></circle>
+            </svg>
+            <div>
+                <div class="timer-text" id="timerText">25:00</div>
+                <div class="session-label" id="sessionLabel">Focus</div>
+            </div>
+        </section>
+
+        <div class="controls">
+            <button class="btn-start" id="startPauseBtn">Start</button>
+            <button class="btn-reset" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="session-tracker">
+            <h3>Completed Focus Sessions</h3>
+            <div class="dots" id="sessionDots"></div>
+            <div id="sessionCount">0 sessions</div>
+
+            <div class="history-header"
+                style="margin-top: 12px; display:flex; justify-content:space-between; align-items:center; width:100%;">
+                <span style="font-size:0.9rem; color:var(--clr-muted);">Session History</span>
+                <button id="clearHistoryBtn" class="btn-reset"
+                    style="padding:4px 10px; font-size:0.75rem;">Clear</button>
+            </div>
+            <ul id="sessionHistory"
+                style="list-style:none; margin-top:8px; padding-left:0; max-height:120px; overflow:auto; font-size:0.82rem; color:var(--clr-text);">
+            </ul>
+        </div>
+
+        <div class="completion-banner hidden" id="completionBanner">Great job! Cycle complete.</div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
